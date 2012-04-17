@@ -1,0 +1,73 @@
+<html>
+
+<head>
+<title>Cubes</title>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<!-- Libraries -->
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
+<script type="text/javascript" src="webgl-utils.js"></script>
+<script type="text/javascript" src="game-shim.js"></script>
+
+
+<script type="text/javascript" src="globals.js"></script>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" src="render.js"></script>
+<script type="text/javascript" src="game.js"></script>
+
+<!-- Materials -->
+<script type="text/javascript" src="materials/cube.material.js"></script>
+<script type="text/javascript" src="materials/picking.material.js"></script>
+
+<!-- Meshes -->
+<script type="text/javascript" src="meshes/cube.mesh.js"></script>
+
+<!-- Setup -->
+<script type="text/javascript" src="bootstrap.js"></script>
+
+<style>
+	/*#game-canvas { cursor: url(images/cursor.png), default; }*/
+	/*#game-canvas {cursor: url('data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='), auto; }*/
+	
+	
+	#fullscreen-button-div {
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		z-index: 10000;
+		cursor: pointer;
+		background: red;
+		color: white;
+		padding: 2px;
+		font-family: sans-serif;
+	}
+	
+	#fps-div {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 10000;
+		background: red;
+		color: white;
+		padding: 2px;
+		font-family: sans-serif;
+	}
+</style>
+
+</head>
+
+
+<body style="margin:0;padding:0;overflow:hidden" onkeydown="return handleKeyDown();" onkeyup="return handleKeyUp();" oncontextmenu="return false;" onmousemove="return handleMouseMove();">
+    <div id="game-canvas-container">
+    	<canvas id="game-canvas" style="border: none;"></canvas>
+    	<div id="fullscreen-button-div">
+    		<span id="fullscreen-button">Fullscreen</span>
+    	</div>
+    	<div id="fps-div">
+    		FPS: <span id="fps">-</span>
+    	</div>
+    </div>
+</body>
+
+</html>
