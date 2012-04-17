@@ -92,7 +92,7 @@ function tick() {
 	
 function handleKeyDown() {
 	var keyCode = 'which' in event ? event.which : event.keyCode;
-	keys[keyCode] = true;	
+	keys[keyCode] = true;
 }
 
 function handleKeyUp() {
