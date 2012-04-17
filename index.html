@@ -5,13 +5,15 @@
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 
 <!-- Libraries -->
-<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
-<script type="text/javascript" src="webgl-utils.js"></script>
-<script type="text/javascript" src="game-shim.js"></script>
+<script type="text/javascript" src="libraries/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="libraries/glMatrix-0.9.5.min.js"></script>
+<script type="text/javascript" src="libraries/webgl-utils.js"></script>
+<script type="text/javascript" src="libraries/game-shim.js"></script>
 
-
+<!-- Globals file -->
 <script type="text/javascript" src="globals.js"></script>
+
+<!-- Game code -->
 <script type="text/javascript" src="utils.js"></script>
 <script type="text/javascript" src="render.js"></script>
 <script type="text/javascript" src="game.js"></script>
@@ -58,7 +60,7 @@
 </head>
 
 
-<body style="margin:0;padding:0;overflow:hidden" onkeydown="return handleKeyDown();" onkeyup="return handleKeyUp();" oncontextmenu="return false;" onmousemove="return handleMouseMove();">
+<body style="margin:0;padding:0;overflow:hidden">
     <div id="game-canvas-container">
     	<canvas id="game-canvas" style="border: none;"></canvas>
     	<div id="fullscreen-button-div">
