@@ -5,7 +5,8 @@ var camRot = [0,0.5];
 
 var game = {
 	blockSize: 1,
-	running: false
+	running: false,
+	gravity : 0.9,
 }
 
 var lastTime = 0;
@@ -25,6 +26,8 @@ function animate(tpf) {
 }
 
 function logic(tpf) {
+	player.update();
+	
 	if(keys[87] === true) {
 		player.move(1, 0);
 	} else if(keys[83] === true) {
@@ -60,7 +63,7 @@ function tick() {
 	        logic(elapsed);
         }
         
-        level.findSelection(camPos, camRot[0], camRot[1]);
+        level.findSelection(player.pos, player.rot[0], player.rot[1]);
         
         fps_c ++;
         if(timeNow - fps_t > 1000) {
