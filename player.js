@@ -9,15 +9,17 @@ var player = {
 	strafeSpeed : 0.2,
 	strafeAcc : 0.02,
 
-	jumpPower : 2,
+	jumpPower : 1,
 
 	pos : vec3.create([5, 10, 5]),
 	rot : [0, 0.5],
 	vel : vec3.create([0, 0, 0]),
 
 	move : function(forward, sideways) {
-		this.vel[0] -= Math.sin(this.rot[0]) * -forward * this.walkSpeed - Math.cos(this.rot[0]) * -sideways * this.strafeSpeed;
-		this.vel[2] += Math.cos(this.rot[0]) * -forward * this.walkSpeed + Math.sin(this.rot[0]) * -sideways * this.strafeSpeed;
+		if(this.vel[1] == 0) {
+			this.vel[0] -= Math.sin(this.rot[0]) * -forward * this.walkSpeed - Math.cos(this.rot[0]) * -sideways * this.strafeSpeed;
+			this.vel[2] += Math.cos(this.rot[0]) * -forward * this.walkSpeed + Math.sin(this.rot[0]) * -sideways * this.strafeSpeed;
+		}
 	},
 	
 	rotate : function(dx, dy) {
@@ -34,7 +36,10 @@ var player = {
 	
 	update : function(tpf) {
 		tpf /= 30;
-		vec3.scale(this.vel, 0.5 * tpf);
+		
+		if(this.vel[1] == 0) {
+			vec3.scale(this.vel, 0.5 * tpf);
+		}
 		
 		var vel = vec3.create(this.vel);
 		vec3.scale(tpf);
