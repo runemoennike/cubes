@@ -1,5 +1,6 @@
 var player = {
 	selection : null,
+	selectionFace : 0,
 
 	rotSpeed : 0.003,
 	tiltSpeed : 0.001,

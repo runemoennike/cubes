@@ -23,7 +23,7 @@ var level = {
 	},
 
 	worldToLevelCoord : function(wp) {
-		return [Math.floor(wp[0] * game.blockSize), Math.floor(wp[1] * game.blockSize), Math.floor(wp[2] * game.blockSize)];
+		return [Math.floor(wp[0] * game.blockSize + game.blockSize / 2.0), Math.floor(wp[1] * game.blockSize + game.blockSize / 2.0), Math.floor(wp[2] * game.blockSize + game.blockSize / 2.0)];
 	},
 
 	isInLevelBounds : function(lp) {
@@ -39,7 +39,7 @@ var level = {
 	},
 
 	findSelection : function(headPos, yaw, pitch) {
-		var stepLength = 1.0;
+		var stepLength = 0.3;
 		var maxSearchLength = 10, curSearchLength = 0;
 		var pos = vec3.create(headPos);
 		var step = vec3.create([Math.sin(yaw) * stepLength, -Math.sin(pitch) * stepLength, -Math.cos(yaw) * stepLength]);
@@ -53,6 +53,27 @@ var level = {
 
 		if(this.isInLevelBounds(l) && this.getLevelBlock(l) != 0) {
 			player.selection = l;
+			
+			vec3.subtract(pos, step);
+			vec3.subtract(pos, step);
+			pp = this.worldToLevelCoord(pos);
+			if(pp[1] > l[1]) {
+				player.selectionFace = 1; // Up
+			} else if(pp[1] < l[1]) {
+				player.selectionFace = 2; // Down
+			} else if(pp[0] > l[0]) {
+				player.selectionFace = 3; // Left
+			} else if(pp[0] < l[0]) {
+				player.selectionFace = 4; // Right
+			} else if(pp[2] > l[2]) {
+				player.selectionFace = 5; // Back
+			} else if(pp[2] < l[2]) {
+				player.selectionFace = 6; // Front
+			} else {
+				player.selectionFace = 1;
+			}
+			
+			$('#debug').html("face=" + player.selectionFace + " l=" + l.toString() + " pp=" + pp.toString());
 		} else {
 			player.selection = null;
 		}

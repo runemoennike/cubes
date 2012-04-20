@@ -202,7 +202,7 @@ function drawScene() {
 					mat4.translate(mvMatrix, [x*2, y*2, z*2]);
 					
 					if(player.selection != null && player.selection[0] == x && player.selection[1] == y && player.selection[2] == z) {
-						gl.uniform1i(materials.cube.uniform.uSelected, 1);
+						gl.uniform1i(materials.cube.uniform.uSelected, player.selectionFace);
 						drawMesh(materials.cube, meshes.cube);
 						gl.uniform1i(materials.cube.uniform.uSelected, 0);
 					} else {
