@@ -1,12 +1,12 @@
 
-var camPos = [5,6,5];
-var camRot = [0,0.5];
+var camPos = [0,0,0];
+var camRot = [0,0];
 
 
 var game = {
 	blockSize: 1,
 	running: false,
-	gravity : 0.9,
+	gravity : 0.3,
 }
 
 var lastTime = 0;
@@ -16,9 +16,6 @@ var keys = {};
 
 function initGame() {
 	level.initLevel();
-	
-	
-	game.running = true;
 }
 
 function animate(tpf) {
@@ -26,7 +23,7 @@ function animate(tpf) {
 }
 
 function logic(tpf) {
-	player.update();
+	player.update(tpf);
 	
 	if(keys[87] === true) {
 		player.move(1, 0);
@@ -43,6 +40,10 @@ function logic(tpf) {
 	if(keys[27] === true) {
 		console.log("Quit.");
 		game.running = false;
+	}
+	
+	if(keys[32] === true) {
+		player.jump();
 	}
 	
 	camPos = player.pos;

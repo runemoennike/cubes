@@ -51,5 +51,8 @@ function webGLStart() {
     gl.clearColor(0.4, 0.6, 1.0, 1.0);
     gl.enable(gl.DEPTH_TEST);
 
+	
+	
+	game.running = true;
     tick();
 }

@@ -25,6 +25,10 @@ var level = {
 	worldToLevelCoord : function(wp) {
 		return [Math.floor(wp[0] * game.blockSize + game.blockSize / 2.0), Math.floor(wp[1] * game.blockSize + game.blockSize / 2.0), Math.floor(wp[2] * game.blockSize + game.blockSize / 2.0)];
 	},
+	
+	collideWC : function(wp) {
+		return this.getLevelBlock(this.worldToLevelCoord(wp)) > 0;
+	},
 
 	isInLevelBounds : function(lp) {
 		return lp[0] >= 0 && lp[1] >= 0 && lp[2] >= 0 && lp[0] < this.XM && lp[1] < this.YM && lp[2] < this.ZM;

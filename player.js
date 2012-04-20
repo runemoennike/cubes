@@ -9,7 +9,9 @@ var player = {
 	strafeSpeed : 0.2,
 	strafeAcc : 0.02,
 
-	pos : vec3.create([5, 6, 5]),
+	jumpPower : 2,
+
+	pos : vec3.create([5, 10, 5]),
 	rot : [0, 0.5],
 	vel : vec3.create([0, 0, 0]),
 
@@ -23,8 +25,24 @@ var player = {
 		camRot[1] += dy * this.tiltSpeed;
 	},
 	
-	update : function() {
-		vec3.scale(this.vel, 0.5);
-		vec3.add(this.pos, this.vel);
+	
+	jump : function() {
+		if(this.vel[1] == 0) {
+			this.vel[1] += this.jumpPower;
+		}
+	},
+	
+	update : function(tpf) {
+		tpf /= 30;
+		vec3.scale(this.vel, 0.5 * tpf);
+		
+		var vel = vec3.create(this.vel);
+		vec3.scale(tpf);
+		vec3.add(this.pos, vel);
+		
+		this.vel[1] -= game.gravity * tpf;
+		if(this.vel[1] < 0 && level.collideWC([this.pos[0], this.pos[1]-2, this.pos[2]])) {
+			this.vel[1] = 0;
+		}
 	}
 }
