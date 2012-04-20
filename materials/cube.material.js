@@ -9,7 +9,8 @@ materials.cube = {
 		'uniform' : {
 			'uPMatrix' : 0,
 			'uMVMatrix' : 0,
-			'uSampler' : 0
+			'uSampler' : 0,
+			'uSelected' : 0
 		},
 		'textures' : {
 			0 : {

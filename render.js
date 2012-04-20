@@ -188,10 +188,11 @@ function drawScene() {
 
 
 
-    mat4.scale(mvMatrix, [.5, .5, .5, .5]);
+    mat4.scale(mvMatrix, [.5, .5, .5]);
 	
 	prepareMesh(materials.cube, meshes.cube);
     
+		
     for(var x = 0; x < levelXM; x ++) {
     	for(var y = 0; y < levelYM; y ++) {
     		for(var z = 0; z < levelZM; z ++) {
@@ -200,7 +201,13 @@ function drawScene() {
 	    			
 					mat4.translate(mvMatrix, [x*2, y*2, z*2]);
 					
-					drawMesh(materials.cube, meshes.cube);
+					if(player.selection[0] == x && player.selection[1] == y && player.selection[2] == z) {
+						gl.uniform1i(materials.cube.uniform.uSelected, 1);
+						drawMesh(materials.cube, meshes.cube);
+						gl.uniform1i(materials.cube.uniform.uSelected, 0);
+					} else {
+						drawMesh(materials.cube, meshes.cube);
+					}
 					
 					mvPopMatrix();
 				}

@@ -7,9 +7,9 @@ $(document).ready(function() {
 	})
 	
 	webGLStart();
-	
-	
+		
 	handleCanvasSizeChange();
+	
 });
 
 function handleCanvasSizeChange() {

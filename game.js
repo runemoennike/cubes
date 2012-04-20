@@ -1,6 +1,6 @@
 
-var camPos = [5,5,5];
-var camRot = [0,0];
+var camPos = [5,6,5];
+var camRot = [0,0.5];
 var levelXM = 20;
 var levelYM = 10;
 var levelZM = 20;
@@ -11,10 +11,17 @@ var tiltSpeed = 0.001;
 var walkSpeed = 0.1;
 var strafeSpeed = 0.1;
 
+var game = {
+	blockSize: 1,
+	running: false
+}
+
+var player = {
+	'selection': NaN
+}
 
 var lastTime = 0;
 var keys = {};
-var running = true;
 
 function initLevel() {
 	level = new Array(levelXM);
@@ -35,6 +42,9 @@ function initLevel() {
 
 function initGame() {
 	initLevel();
+	
+	
+	game.running = true;
 }
 
 function animate(tpf) {
@@ -56,7 +66,7 @@ function logic(tpf) {
 	
 	if(keys[27] === true) {
 		console.log("Quit.");
-		running = false;
+		game.running = false;
 	}
 	
 }
@@ -68,7 +78,7 @@ function move(forward, sideways) {
 
 var fps_c = 0, fps_t = 0;
 function tick() {
-	if(running) {
+	if(game.running) {
         requestAnimFrame(tick);
         drawScene();
         
@@ -79,6 +89,8 @@ function tick() {
 	        logic(elapsed);
         }
         
+        findSelection(camPos, camRot[0], camRot[1]);
+        
         fps_c ++;
         if(timeNow - fps_t > 1000) {
         	$("#fps").html(fps_c.toString());
@@ -87,6 +99,45 @@ function tick() {
         }
         
         lastTime = timeNow;
+	}
+}
+
+function worldToLevelCoord(wp) {
+	return [
+		Math.floor(wp[0] * game.blockSize),
+		Math.floor(wp[1] * game.blockSize),
+		Math.floor(wp[2] * game.blockSize)
+	];
+}
+
+function isInLevelBounds(lp) {
+	return lp[0] >= 0 && lp[1] >= 0 && lp[2] >= 0 && lp[0] < levelXM && lp[1] < levelYM && lp[2] < levelZM;
+}
+
+function getLevelBlock(lp) {
+	return level[lp[0]][lp[1]][lp[2]];
+}
+
+
+function findSelection(headPos, yaw, pitch) {
+	var stepLength = 1.0;
+	var maxSearchLength = 10, curSearchLength = 0;
+	var pos = vec3.create(headPos);
+	var step = vec3.create([
+		Math.sin(yaw) * stepLength,
+		-Math.sin(pitch) * stepLength,
+		-Math.cos(yaw) * stepLength	
+	]);
+	var l = vec3.create();
+	
+	do {
+		l = worldToLevelCoord(pos);
+		vec3.add(pos, step);
+		curSearchLength += stepLength;
+	} while(curSearchLength < maxSearchLength && isInLevelBounds(l) && getLevelBlock(l) == 0);
+		
+	if(isInLevelBounds(l) && getLevelBlock(l) != 0) {
+		player.selection = l;
 	}
 }
 	
