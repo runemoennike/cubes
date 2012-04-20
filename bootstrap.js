@@ -38,6 +38,7 @@ function webGLStart() {
 	body.onkeyup = handleKeyUp; 
 	body.oncontextmenu=function(){return false};
 	body.onmousemove = handleMouseMove;
+	body.onmousedown = handleMouseDown;
     
     canvas.width = innerWidth;
 	canvas.height = innerHeight;

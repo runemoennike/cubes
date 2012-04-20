@@ -193,15 +193,15 @@ function drawScene() {
 	prepareMesh(materials.cube, meshes.cube);
     
 		
-    for(var x = 0; x < levelXM; x ++) {
-    	for(var y = 0; y < levelYM; y ++) {
-    		for(var z = 0; z < levelZM; z ++) {
-    			if(isVisible(x,y,z) && level[x][y][z] != 0) {
+    for(var x = 0; x < level.XM; x ++) {
+    	for(var y = 0; y < level.YM; y ++) {
+    		for(var z = 0; z < level.ZM; z ++) {
+    			if(isVisible(x,y,z) && level.getLevelBlock([x,y,z]) != 0) {
 	    			mvPushMatrix();
 	    			
 					mat4.translate(mvMatrix, [x*2, y*2, z*2]);
 					
-					if(player.selection[0] == x && player.selection[1] == y && player.selection[2] == z) {
+					if(player.selection != null && player.selection[0] == x && player.selection[1] == y && player.selection[2] == z) {
 						gl.uniform1i(materials.cube.uniform.uSelected, 1);
 						drawMesh(materials.cube, meshes.cube);
 						gl.uniform1i(materials.cube.uniform.uSelected, 0);
@@ -217,10 +217,10 @@ function drawScene() {
 }
 
 function isVisible(x, y, z) {
-	return  x == 0 || x == levelXM - 1 
-			|| y == 0 || y == levelYM - 1
-			|| z == 0 || z == levelZM - 1
-			|| level[x][y][z - 1] == 0 || level[x][y][z + 1] == 0 
-			|| level[x][y - 1][z] == 0 || level[x][y + 1][z] == 0
-			|| level[x - 1][y][z] == 0 || level[x + 1][y][z] == 0;
+	return  x == 0 || x == level.XM - 1 
+			|| y == 0 || y == level.YM - 1
+			|| z == 0 || z == level.ZM - 1
+			|| level.blocks[x][y][z - 1] == 0 || level.blocks[x][y][z + 1] == 0 
+			|| level.blocks[x][y - 1][z] == 0 || level.blocks[x][y + 1][z] == 0
+			|| level.blocks[x - 1][y][z] == 0 || level.blocks[x + 1][y][z] == 0;
 }
