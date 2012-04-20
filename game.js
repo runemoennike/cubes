@@ -112,9 +112,9 @@ function handleMouseDown() {
 	if(player.selection != null && level.isInLevelBounds(player.selection)) {
 		if(event.which == 1) {
 			var newPos = [
-				player.selection[0],
-				player.selection[1] + 1,
-				player.selection[2]
+				player.selection[0] + (player.selectionFace == 3 ? 1 : (player.selectionFace == 4 ? -1 : 0)),
+				player.selection[1] + (player.selectionFace == 1 ? 1 : (player.selectionFace == 2 ? -1 : 0)),
+				player.selection[2] + (player.selectionFace == 5 ? 1 : (player.selectionFace == 6 ? -1 : 0))
 			];
 			level.setLevelBlock(newPos, 1);
 		} else {
