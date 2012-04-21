@@ -26,8 +26,30 @@ var level = {
 		return [Math.floor(wp[0] * game.blockSize + game.blockSize / 2.0), Math.floor(wp[1] * game.blockSize + game.blockSize / 2.0), Math.floor(wp[2] * game.blockSize + game.blockSize / 2.0)];
 	},
 	
+	levelToWorldCoord : function(lp) {
+		return [(lp[0] - game.blockSize / 2) / game.blockSize, (lp[1] - game.blockSize / 2) / game.blockSize, (lp[2] - game.blockSize / 2) / game.blockSize]
+	},
+	
 	collideWC : function(wp) {
 		return this.getLevelBlock(this.worldToLevelCoord(wp)) > 0;
+	},
+	
+	collideLC : function(lp) {
+		return this.getLevelBlock(lp) > 0;
+	},
+	
+	findHeightWC : function(wp) {
+		var lp = this.worldToLevelCoord(wp);
+		return this.findHeightLC(lp);
+	},
+	
+	findHeightLC : function(lp) {
+		for(var y = level.YM - 1; y >= 0; y --) {
+			if(level.collideLC([lp[0], y, lp[2]])) {
+				return y;
+			}
+		}
+		return 0;
 	},
 
 	isInLevelBounds : function(lp) {
@@ -77,7 +99,7 @@ var level = {
 				player.selectionFace = 1;
 			}
 			
-			$('#debug').html("face=" + player.selectionFace + " l=" + l.toString() + " pp=" + pp.toString());
+			// $('#debug').html("face=" + player.selectionFace + " l=" + l.toString() + " pp=" + pp.toString());
 		} else {
 			player.selection = null;
 		}
