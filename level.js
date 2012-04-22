@@ -13,7 +13,7 @@ var level = {
 				this.blocks[x][y] = new Array(this.ZM);
 				for( z = 0; z < this.ZM; z++) {
 					if(y < 5) {
-						this.blocks[x][y][z] = 1;
+						this.blocks[x][y][z] = Math.floor(Math.random()*4) + 1;
 					} else {
 						this.blocks[x][y][z] = 0;
 					}

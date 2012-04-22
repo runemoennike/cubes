@@ -3,6 +3,7 @@ var gl;
 function initGL(canvas) {
     try {
         gl = canvas.getContext("experimental-webgl");
+        //gl = WebGLDebugUtils.makeDebugContext(canvas.getContext("experimental-webgl")); // Debug
         gl.viewportWidth = canvas.width;
         gl.viewportHeight = canvas.height;
         
@@ -88,6 +89,7 @@ function loadMaterial(material) {
     for(var key in material.textures) {
     	initTexture(material.textures[key]);
     }
+    console.log(material);
 }
 
 
@@ -159,9 +161,9 @@ function prepareMesh(material, mesh) {
 	gl.vertexAttribPointer(material.attrib.aVertexNormal, mesh.vertexNormalBuffer.itemSize, gl.FLOAT, false, 0, 0);
 
 	for(var key in material.textures) {
-		gl.activeTexture(gl.TEXTURE0 + key);
+		gl.activeTexture(gl.TEXTURE0 + parseInt(key));
 		gl.bindTexture(gl.TEXTURE_2D, material.textures[key].tex);
-		gl.uniform1i(material.uniform[material.textures[key].uniform], key);
+		gl.uniform1i(material.uniform[material.textures[key].uniform], parseInt(key));
 	}
 }
 
@@ -200,6 +202,8 @@ function drawScene() {
 	    			mvPushMatrix();
 	    			
 					mat4.translate(mvMatrix, [x*2, y*2, z*2]);
+					
+					gl.uniform1i(materials.cube.uniform.uBlockType, level.getLevelBlock([x,y,z]));
 					
 					if(player.selection != null && player.selection[0] == x && player.selection[1] == y && player.selection[2] == z) {
 						gl.uniform1i(materials.cube.uniform.uSelected, player.selectionFace);
