@@ -9,13 +9,20 @@ materials.cube = {
 		'uniform' : {
 			'uPMatrix' : 0,
 			'uMVMatrix' : 0,
+			
 			'uSelected' : 0,
 			'uBlockType' : 0,
+			'uBreakage' : 0,
+			
 			'uTexGrass' : 0,
 			'uTexStone' : 0,
 			'uTexPebble' : 0,
 			'uTexSand' : 0,
-			'uTexWater' : 0
+			'uTexWater' : 0,
+			
+			'uTexBreaking1' : 0,
+			'uTexBreaking2' : 0,
+			'uTexBreaking3' : 0
 		},
 		'textures' : {
 			0 : {
@@ -37,6 +44,19 @@ materials.cube = {
 			4 : {
 				'filename' : 'water.png',
 				'uniform' : 'uTexWater'
+			},
+			
+			5 : {
+				'filename' : 'breaking_1.png',
+				'uniform' : 'uTexBreaking1'
+			},
+			6 : {
+				'filename' : 'breaking_2.png',
+				'uniform' : 'uTexBreaking2'
+			},
+			7 : {
+				'filename' : 'breaking_3.png',
+				'uniform' : 'uTexBreaking3'
 			}
 		}
 	};
