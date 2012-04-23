@@ -7,6 +7,11 @@ var game = {
 	blockSize: 1,
 	running: false,
 	gravity : 0.3,
+	
+	cooldowns : {
+		'build' : {'cd' : 500},
+		'break' : {'cd' : 300}
+	}
 }
 
 var lastTime = 0;
@@ -48,25 +53,37 @@ function logic(tpf) {
 	}
 	
 	if(mousebuttons[1] === true) {
-		if(player.selection != null && level.isInLevelBounds(player.selection)) {
+		if(player.selection != null && level.isInLevelBounds(player.selection) && cooldownCheck('build')) {
 			var newPos = [
 				player.selection[0] + (player.selectionFace == 3 ? 1 : (player.selectionFace == 4 ? -1 : 0)),
 				player.selection[1] + (player.selectionFace == 1 ? 1 : (player.selectionFace == 2 ? -1 : 0)),
 				player.selection[2] + (player.selectionFace == 5 ? 1 : (player.selectionFace == 6 ? -1 : 0))
 			];
 			level.setLevelBlock(newPos, 1);
+			cooldownStart('build');
 		}
 	}
 	
 	if(mousebuttons[3] === true) {
-		if(player.selection != null && level.isInLevelBounds(player.selection)) {
+		if(player.selection != null && level.isInLevelBounds(player.selection) && cooldownCheck('break')) {
 			player.smash();
+			cooldownStart('break');
 		}
 	}
 	
 	camPos = player.pos;
 	camRot = player.rot;
 	
+}
+
+function cooldownCheck(name) {
+	var timeNow = new Date().getTime();
+	return (typeof game.cooldowns[name].stamp == 'undefined') || (timeNow - game.cooldowns[name].stamp > game.cooldowns[name].cd); 
+}
+
+function cooldownStart(name) {
+	game.cooldowns[name].stamp = new Date().getTime();
+	console.log(game.cooldowns);
 }
 
 var fps_c = 0, fps_t = 0;
