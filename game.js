@@ -11,6 +11,7 @@ var game = {
 
 var lastTime = 0;
 var keys = {};
+var mousebuttons = {};
 
 
 
@@ -44,6 +45,23 @@ function logic(tpf) {
 	
 	if(keys[32] === true) {
 		player.jump();
+	}
+	
+	if(mousebuttons[1] === true) {
+		if(player.selection != null && level.isInLevelBounds(player.selection)) {
+			var newPos = [
+				player.selection[0] + (player.selectionFace == 3 ? 1 : (player.selectionFace == 4 ? -1 : 0)),
+				player.selection[1] + (player.selectionFace == 1 ? 1 : (player.selectionFace == 2 ? -1 : 0)),
+				player.selection[2] + (player.selectionFace == 5 ? 1 : (player.selectionFace == 6 ? -1 : 0))
+			];
+			level.setLevelBlock(newPos, 1);
+		}
+	}
+	
+	if(mousebuttons[3] === true) {
+		if(player.selection != null && level.isInLevelBounds(player.selection)) {
+			player.smash();
+		}
 	}
 	
 	camPos = player.pos;
@@ -109,23 +127,17 @@ function handleMouseMove() {
 	lastMY = event.screenY;
 }
 
+function handleMouseUp() {
+	mousebuttons[event.which] = false;
+}
+
 function handleMouseDown() {
-	if(player.selection != null && level.isInLevelBounds(player.selection)) {
-		if(event.which == 1) {
-			var newPos = [
-				player.selection[0] + (player.selectionFace == 3 ? 1 : (player.selectionFace == 4 ? -1 : 0)),
-				player.selection[1] + (player.selectionFace == 1 ? 1 : (player.selectionFace == 2 ? -1 : 0)),
-				player.selection[2] + (player.selectionFace == 5 ? 1 : (player.selectionFace == 6 ? -1 : 0))
-			];
-			level.setLevelBlock(newPos, 1);
-		} else {
-			player.smash();
-			// level.setLevelBlock(player.selection, 0);
-		}		
-	}
+	mousebuttons[event.which] = true;
 }
 
 window.onblur = function() {
     for (key in keys)
-            keys[key] = false;
+        keys[key] = false;
+    for (key in mousebuttons)
+    	mousebuttons[key] = false;
 };
