@@ -1,5 +1,6 @@
 var level = {
 	blocks : new Array(),
+	breakage : {},
 
 	XM : 20,
 	YM : 10,

@@ -39,6 +39,20 @@ var player = {
 		}
 	},
 	
+	smash : function() {
+		if(this.selection == null) return;
+		if(typeof level.breakage[this.selection] != 'undefined' ) {
+			if(level.breakage[this.selection] > 1) {
+				level.setLevelBlock(this.selection, 0);
+				delete level.breakage[this.selection];
+			} else {
+				level.breakage[this.selection] += 0.3;
+			}
+		} else {
+			level.breakage[this.selection] = 0;
+		}
+	},
+	
 	update : function(tpf) {
 		tpf /= 30;
 		

@@ -205,6 +205,13 @@ function drawScene() {
 					
 					gl.uniform1i(materials.cube.uniform.uBlockType, level.getLevelBlock([x,y,z]));
 					
+					if(typeof level.breakage[[x,y,z]] != 'undefined') {
+						var breakage = Math.floor(level.breakage[[x,y,z]] * 3); 
+						gl.uniform1i(materials.cube.uniform.uBreakage, breakage);
+					} else {
+						gl.uniform1i(materials.cube.uniform.uBreakage, 0);						
+					}
+					
 					if(player.selection != null && player.selection[0] == x && player.selection[1] == y && player.selection[2] == z) {
 						gl.uniform1i(materials.cube.uniform.uSelected, player.selectionFace);
 						drawMesh(materials.cube, meshes.cube);

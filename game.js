@@ -119,7 +119,8 @@ function handleMouseDown() {
 			];
 			level.setLevelBlock(newPos, 1);
 		} else {
-			level.setLevelBlock(player.selection, 0);
+			player.smash();
+			// level.setLevelBlock(player.selection, 0);
 		}		
 	}
 }
