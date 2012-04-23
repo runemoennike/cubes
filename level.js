@@ -104,5 +104,18 @@ var level = {
 		} else {
 			player.selection = null;
 		}
-	}
+	},
+	
+	update : function(tpf) {
+		tpf = 30.0 / tpf;
+		var timeNow = new Date().getTime();
+		for(var key in this.breakage) {
+			if(timeNow - this.breakage[key].lasthit > 1000) {
+				this.breakage[key].damage -= 0.05 * tpf;
+				if(this.breakage[key].damage < -0.1) {
+					delete this.breakage[key];
+				}
+			}
+		}
+	} 
 }

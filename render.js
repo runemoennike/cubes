@@ -206,7 +206,7 @@ function drawScene() {
 					gl.uniform1i(materials.cube.uniform.uBlockType, level.getLevelBlock([x,y,z]));
 					
 					if(typeof level.breakage[[x,y,z]] != 'undefined') {
-						var breakage = Math.floor(level.breakage[[x,y,z]] * 3); 
+						var breakage = Math.floor(level.breakage[[x,y,z]].damage * 3); 
 						gl.uniform1i(materials.cube.uniform.uBreakage, breakage);
 					} else {
 						gl.uniform1i(materials.cube.uniform.uBreakage, 0);						

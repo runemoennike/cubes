@@ -30,6 +30,7 @@ function animate(tpf) {
 
 function logic(tpf) {
 	player.update(tpf);
+	level.update(tpf);
 	
 	if(keys[87] === true) {
 		player.move(1, 0);
@@ -83,7 +84,6 @@ function cooldownCheck(name) {
 
 function cooldownStart(name) {
 	game.cooldowns[name].stamp = new Date().getTime();
-	console.log(game.cooldowns);
 }
 
 var fps_c = 0, fps_t = 0;

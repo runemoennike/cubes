@@ -42,14 +42,15 @@ var player = {
 	smash : function() {
 		if(this.selection == null) return;
 		if(typeof level.breakage[this.selection] != 'undefined' ) {
-			if(level.breakage[this.selection] > 1) {
+			if(level.breakage[this.selection].damage > 1.0) {
 				level.setLevelBlock(this.selection, 0);
 				delete level.breakage[this.selection];
 			} else {
-				level.breakage[this.selection] += 0.3;
+				level.breakage[this.selection].damage += 0.3;
+				level.breakage[this.selection].lasthit = new Date().getTime();
 			}
 		} else {
-			level.breakage[this.selection] = 0;
+			level.breakage[this.selection] = {'lasthit' : new Date().getTime(), 'damage' : 0};
 		}
 	},
 	
