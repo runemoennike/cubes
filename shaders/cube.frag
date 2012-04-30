@@ -32,7 +32,10 @@ void main(void) {
 			(uSelected == 5 && vNormal.z == 1.0) ||
 			(uSelected == 6 && vNormal.z == -1.0); 
 				
-		if(isSelectedFace) {
+		
+		if(abs(vTextureCoord.x - 0.5) > 0.49 || abs(vTextureCoord.y - 0.5) > 0.49) {
+			highlight_color += vec4(vec3(0.6), -0.5);
+		} else if(isSelectedFace) {
 			highlight_color += vec4(0.2);
 		}	
 	}

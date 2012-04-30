@@ -54,6 +54,7 @@ function logic(tpf) {
 	}
 	
 	if(mousebuttons[1] === true) {
+		player.continuePunch();
 		if(player.selection != null && level.isInLevelBounds(player.selection) && cooldownCheck('build')) {
 			var newPos = [
 				player.selection[0] + (player.selectionFace == 3 ? 1 : (player.selectionFace == 4 ? -1 : 0)),
@@ -66,6 +67,7 @@ function logic(tpf) {
 	}
 	
 	if(mousebuttons[3] === true) {
+		player.continuePunch();
 		if(player.selection != null && level.isInLevelBounds(player.selection) && cooldownCheck('break')) {
 			player.smash();
 			cooldownStart('break');

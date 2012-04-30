@@ -27,7 +27,7 @@ materials.cube = {
 		'textures' : {
 			0 : {
 				'filename' : 'grass.png',
-				'uniform' : 'uTextGrass'
+				'uniform' : 'uTexGrass'
 			},
 			1 : {
 				'filename' : 'stone.png',

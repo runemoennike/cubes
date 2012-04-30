@@ -9,9 +9,13 @@ materials.arm = {
 		'uniform' : {
 			'uPMatrix' : 0,
 			'uMVMatrix' : 0,
+			'uTexSkin' : 0
 		},
 		'textures' : {
-			
+			0 : {
+				'filename' : 'arm.png',
+				'uniform' : 'uTexSkin'
+			}
 		}
 	};
 	

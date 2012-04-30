@@ -14,6 +14,10 @@ var player = {
 	pos : vec3.create([5, 10, 5]),
 	rot : [0, 0.5],
 	vel : vec3.create([0, 0, 0]),
+	
+	armAngle : 0,
+	armDir : 0,
+	isPunching : false,
 
 	move : function(forward, sideways) {
 		if(this.vel[1] == 0) {
@@ -54,6 +58,10 @@ var player = {
 		}
 	},
 	
+	continuePunch : function() {
+		this.isPunching = true;
+	},
+	
 	update : function(tpf) {
 		tpf /= 30;
 		
@@ -80,5 +88,27 @@ var player = {
 			var levelHeight = level.findHeightWC(this.pos);
 			this.pos[1] = (levelHeight) / game.blockSize + 2;
 		}
+		
+		if(this.isPunching) {
+			if(this.armDir == 0) {
+				this.armAngle += 0.06 * tpf;
+				if(this.armAngle > 0.3) {
+					this.armDir = 1; 
+				}
+			} else if(this.armDir == 1) {
+				this.armAngle -= 0.10 * tpf;
+				if(this.armAngle < 0.0) {
+					this.armDir = 0;
+				}
+			}
+		} else if(this.armAngle != 0.0) {
+			this.armAngle -= 0.06 * tpf;
+			if(this.armAngle < 0.0) {
+				this.armAngle = 0.0;
+				this.armDir = 0;
+			}
+		}
+		
+		this.isPunching = false;
 	}
 }

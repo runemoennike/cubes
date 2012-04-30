@@ -183,6 +183,8 @@ function drawScene() {
 	var cam_ = vec3.create();
 	vec3.negate(camPos, cam_);
 
+	mvPushMatrix();
+	
     mat4.rotate(mvMatrix, camRot[0], [0, 1, 0]);
     mat4.rotate(mvMatrix, camRot[1], [Math.cos(camRot[0]), 0, Math.sin(camRot[0])]);
     	
@@ -225,6 +227,15 @@ function drawScene() {
     		}
     	}	
     }
+    
+    mvPopMatrix();
+    
+    mvRotate(player.armAngle, [1,0,0]);
+    mvTranslate([0.8,-0.4,-1]);
+    mvScale([0.1, 0.1, 0.25]);
+    
+    prepareMesh(materials.arm, meshes.arm);
+    drawMesh(materials.arm, meshes.arm);
 }
 
 function isVisible(x, y, z) {
