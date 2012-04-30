@@ -15,6 +15,18 @@ function mvPopMatrix() {
     mvMatrix = mvMatrixStack.pop();
 }
 
+function mvScale(mat) {
+	mat4.scale(mvMatrix, mat);
+}
+
+function mvTranslate(mat) {
+	mat4.translate(mvMatrix, mat);
+}
+
+function mvRotate(a, mat) {
+	mat4.rotate(mvMatrix, a, mat);
+}
+
 
 function setMatrixUniforms(material) {
     gl.uniformMatrix4fv(material.uniform.uPMatrix, false, pMatrix);
