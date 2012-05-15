@@ -188,7 +188,7 @@ function drawScene() {
 	// Sky back drop
 	mvPushMatrix();
 	mvTranslate([0,0,-10]);
-	mvScale([10,5,1]);
+	mvScale([10,10,1]);
 	gl.depthMask(0);
 	prepareMesh(materials.sky, meshes.quad);
 	drawMesh(materials.sky, meshes.quad);

@@ -18,17 +18,14 @@ void main(void) {
 	// TODO: Project sun onto surface, and take that distance
 	float w_sun = 0.0;
 	float sun_dist = length(vSunVector);
-	if(sun_dist < 10.0) {
-		w_sun = 1.0;
-	} else {
-		w_sun = 1.0/(sun_dist*sun_dist) * 200.0;
-		w_sun = clamp(w_sun, 0.0, 1.0);
-	}
+
+	w_sun = 1.0/(sun_dist) * 8.0;
+	w_sun = clamp(w_sun, 0.0, 1.0);
 	
 	// Horizon
 	float w_horizon = 0.0;
 	if(vWorldPos.y < 0.0) {
-		w_horizon = 1.0-(1.0/-vWorldPos.y) / 2.0;
+		w_horizon = 1.0-(1.0/-vWorldPos.y) / 10.0;
 		w_horizon = clamp(w_horizon, 0.0, 1.0);
 	}
 	

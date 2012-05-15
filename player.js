@@ -12,7 +12,7 @@ var player = {
 	jumpPower : 1,
 
 	pos : vec3.create([5, 10, 5]),
-	rot : [0, 0],
+	rot : [0, -0.5],
 	vel : vec3.create([0, 0, 0]),
 	
 	armAngle : 0,
