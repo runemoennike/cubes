@@ -11,3 +11,9 @@
  * JIT loading of areas
  * Reduce draw calls somehow
  * Render far-away areas as averages and larger blocks
+
+Optimizations
+http://gamedev.stackexchange.com/questions/22664/how-can-i-improve-rendering-speeds-of-a-voxel-minecraft-type-game
+
+FBO
+http://learningwebgl.com/blog/?p=1786
