@@ -1,6 +1,6 @@
 materials.sun = {
-		'frag_shaders' : ['sun.frag'],
-		'vert_shaders' : ['sun.vert'],
+		'frag_shaders' : ['sky.frag'],
+		'vert_shaders' : ['sky.vert'],
 		'attrib' : {
 			'aVertexPosition' : 0,
 			'aTextureCoord' : 0,
@@ -9,10 +9,6 @@ materials.sun = {
 		'uniform' : {
 			'uPMatrix' : 0,
 			'uMVMatrix' : 0,
-			
-			'uSelected' : 0,
-			'uBlockType' : 0,
-			'uBreakage' : 0,
 			
 			'uSunColor' : 0,
 		},

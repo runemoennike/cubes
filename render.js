@@ -53,6 +53,7 @@ function getShader(gl, filename, type) {
 function initMaterials() {
 	for(var idx in materials) {
 		loadMaterial(materials[idx]);
+		console.log("Loaded material " + idx);
 	}
 }
 
@@ -89,7 +90,6 @@ function loadMaterial(material) {
     for(var key in material.textures) {
     	initTexture(material.textures[key]);
     }
-    console.log(material);
 }
 
 
@@ -115,6 +115,7 @@ function initTexture(texture) {
 
 function initMeshes() {
 	for(var idx in meshes) {
+		console.log("Loaded mesh " + idx);
 		loadMesh(meshes[idx]);
 	}
 }
@@ -184,16 +185,27 @@ function drawScene() {
 
     mat4.identity(mvMatrix);
 	
+	// Sky back drop
+	mvPushMatrix();
+	mvTranslate([0,0,-10]);
+	mvScale([10,5,1]);
+	gl.depthMask(0);
+	prepareMesh(materials.sky, meshes.quad);
+	drawMesh(materials.sky, meshes.quad);
+	gl.depthMask(1);
+	mvPopMatrix();
+	
+	// Cam/head transforms
+	mvPushMatrix();
 	var cam_ = vec3.create();
 	vec3.negate(camPos, cam_);
 
-	mvPushMatrix();
-	
     mat4.rotate(mvMatrix, camRot[0], [0, 1, 0]);
     mat4.rotate(mvMatrix, camRot[1], [Math.cos(camRot[0]), 0, Math.sin(camRot[0])]);
     	
 	mat4.translate(mvMatrix, cam_);
 
+	// Cubes
 	mvPushMatrix();
 
     mat4.scale(mvMatrix, [.5, .5, .5]);
@@ -238,13 +250,13 @@ function drawScene() {
     mvPushMatrix();
     
     mvTranslate(sun.pos);
-    prepareMesh(materials.sun, meshes.cube);
-    drawMesh(materials.sun, meshes.cube);
+    //prepareMesh(materials.sun, meshes.cube);
+    //drawMesh(materials.sun, meshes.cube);
     
     mvPopMatrix();
     
     
-    // Cam/head
+    // Cam/head transforms
     mvPopMatrix();
     
     // Arm
@@ -258,6 +270,7 @@ function drawScene() {
     drawMesh(materials.arm, meshes.arm);
     
     mvPopMatrix();
+    
 }
 
 function isVisible(x, y, z) {
