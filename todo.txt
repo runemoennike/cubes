@@ -1,0 +1,13 @@
+- Deffered rendering:
+ * Sun, when looking at
+
+- Torches
+
+- Bump mapping
+
+- Fix movement/physics
+
+- Expand area
+ * JIT loading of areas
+ * Reduce draw calls somehow
+ * Render far-away areas as averages and larger blocks
