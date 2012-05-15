@@ -10,14 +10,9 @@ varying vec3 vNormal;
 
 varying vec3 vWorldPos;
 
-uniform vec3 uSunPosition;
-varying vec3 vSunVector;
-
 void main(void) {
 	gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
 	vTextureCoord = aTextureCoord;
 	vNormal = aVertexNormal;
 	vWorldPos = (uMVMatrix * vec4(aVertexPosition, 1.0)).xyz;
-	
-	vSunVector = uSunPosition - aVertexPosition;
 }

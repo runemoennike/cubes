@@ -14,6 +14,9 @@ materials.cube = {
 			'uBlockType' : 0,
 			'uBreakage' : 0,
 			
+			'uSunPosition' : 0,
+			'uSunColor' : 0,
+			
 			'uTexGrass' : 0,
 			'uTexStone' : 0,
 			'uTexPebble' : 0,
@@ -58,6 +61,10 @@ materials.cube = {
 				'filename' : 'breaking_3.png',
 				'uniform' : 'uTexBreaking3'
 			}
+		},
+		'prepare' : function() {
+			gl.uniform3f(this.uniform.uSunPosition, sun.pos[0], sun.pos[1], sun.pos[2]);
+			gl.uniform3f(this.uniform.uSunColor, sun.color[0], sun.color[1], sun.color[2]);
 		}
 	};
 	

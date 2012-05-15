@@ -165,6 +165,10 @@ function prepareMesh(material, mesh) {
 		gl.bindTexture(gl.TEXTURE_2D, material.textures[key].tex);
 		gl.uniform1i(material.uniform[material.textures[key].uniform], parseInt(key));
 	}
+	
+	if(typeof material.prepare != 'undefined') {
+		material.prepare();
+	}
 }
 
 function drawMesh(material, mesh) {
@@ -190,7 +194,7 @@ function drawScene() {
     	
 	mat4.translate(mvMatrix, cam_);
 
-
+	mvPushMatrix();
 
     mat4.scale(mvMatrix, [.5, .5, .5]);
 	
@@ -230,12 +234,30 @@ function drawScene() {
     
     mvPopMatrix();
     
+    // Sun
+    mvPushMatrix();
+    
+    mvTranslate(sun.pos);
+    prepareMesh(materials.sun, meshes.cube);
+    drawMesh(materials.sun, meshes.cube);
+    
+    mvPopMatrix();
+    
+    
+    // Cam/head
+    mvPopMatrix();
+    
+    // Arm
+    mvPushMatrix();
+    
     mvRotate(player.armAngle, [1,0,0]);
     mvTranslate([0.8,-0.4,-1]);
     mvScale([0.1, 0.1, 0.25]);
     
     prepareMesh(materials.arm, meshes.arm);
     drawMesh(materials.arm, meshes.arm);
+    
+    mvPopMatrix();
 }
 
 function isVisible(x, y, z) {

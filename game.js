@@ -31,6 +31,7 @@ function animate(tpf) {
 function logic(tpf) {
 	player.update(tpf);
 	level.update(tpf);
+	sun.update(tpf);
 	
 	if(keys[87] === true) {
 		player.move(1, 0);
