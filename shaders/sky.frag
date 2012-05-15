@@ -14,13 +14,18 @@ varying vec3 vSunVector;
 uniform mat4 uRotMatrix;
 
 void main(void) {
-
-	// TODO: Project sun onto surface, and take that distance
 	float w_sun = 0.0;
 	float sun_dist = length(vSunVector);
 
-	w_sun = 1.0/(sun_dist) * 8.0;
-	w_sun = clamp(w_sun, 0.0, 1.0);
+	//w_sun = 1.0/(sun_dist) * 8.0;
+	//w_sun = clamp(w_sun, 0.0, 1.0);
+	
+	float d = dot(normalize(vSunVector), normalize(vWorldPos));
+	if(d > 0.997) {
+		w_sun = 1.0;
+	} else if(d > 0.0) {
+		w_sun = d*d;
+	}
 	
 	// Horizon
 	float w_horizon = 0.0;

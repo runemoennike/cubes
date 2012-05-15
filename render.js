@@ -187,15 +187,15 @@ function drawScene() {
 	
 	// Sky back drop
 	mvPushMatrix();
-	mvTranslate([0,0,-10]);
-	mvScale([10,10,1]);
+	mvTranslate([0,0,-2]);
+	mvScale([1,1,1]);
 	gl.depthMask(0);
 	prepareMesh(materials.sky, meshes.quad);
 	drawMesh(materials.sky, meshes.quad);
 	gl.depthMask(1);
 	mvPopMatrix();
 	
-	// Cam/head transforms
+	// Cam rotation
 	mvPushMatrix();
 	var cam_ = vec3.create();
 	vec3.negate(camPos, cam_);
@@ -203,6 +203,15 @@ function drawScene() {
     mat4.rotate(mvMatrix, camRot[0], [0, 1, 0]);
     mat4.rotate(mvMatrix, camRot[1], [Math.cos(camRot[0]), 0, Math.sin(camRot[0])]);
     	
+    
+    // Sun
+    mvPushMatrix();
+    mvTranslate(sun.pos);
+    //prepareMesh(materials.sun, meshes.cube);
+    //drawMesh(materials.sun, meshes.cube);
+    mvPopMatrix();
+    
+    // Cam position	
 	mat4.translate(mvMatrix, cam_);
 
 	// Cubes
@@ -243,15 +252,6 @@ function drawScene() {
     		}
     	}	
     }
-    
-    mvPopMatrix();
-    
-    // Sun
-    mvPushMatrix();
-    
-    mvTranslate(sun.pos);
-    //prepareMesh(materials.sun, meshes.cube);
-    //drawMesh(materials.sun, meshes.cube);
     
     mvPopMatrix();
     
