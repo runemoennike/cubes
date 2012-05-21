@@ -14,17 +14,15 @@ varying vec3 vSunVector;
 uniform mat4 uRotMatrix;
 
 void main(void) {
+	vec3 norm = vNormal;
 	float w_sun = 0.0;
 	float sun_dist = length(vSunVector);
 
-	//w_sun = 1.0/(sun_dist) * 8.0;
-	//w_sun = clamp(w_sun, 0.0, 1.0);
-	
 	float d = dot(normalize(vSunVector), normalize(vWorldPos));
 	if(d > 0.997) {
 		w_sun = 1.0;
 	} else if(d > 0.0) {
-		w_sun = d*d;
+		w_sun = pow(d,20.0);
 	}
 	
 	// Horizon
