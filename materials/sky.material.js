@@ -14,9 +14,16 @@ materials.sky = {
 			'uSunPosition' : 0,
 			'uSunColor' : 0,
 			'uSkyColor' : 0,
-			'uHorizonColor' : 0
+			'uHorizonColor' : 0,
+			'uTimeOfDay' : 0,
+			
+			'uTexStars' : 0
 		},
 		'textures' : {
+			0 : {
+				'filename' : 'stars.png',
+				'uniform' : 'uTexStars'
+			},
 		},
 		'prepare' : function() {
 			var rotMatrix = mat4.create();
@@ -30,6 +37,8 @@ materials.sky = {
 			gl.uniform3f(this.uniform.uSunColor, sun.color[0], sun.color[1], sun.color[2]);
 			gl.uniform3f(this.uniform.uSkyColor, sun.skycolor[0], sun.skycolor[1], sun.skycolor[2]);
 			gl.uniform3f(this.uniform.uHorizonColor, sun.horizoncolor[0], sun.horizoncolor[1], sun.horizoncolor[2]);
+			
+			gl.uniform1f(this.uniform.uTimeOfDay, sun.timeOfDay);
 		}
 	};
 	

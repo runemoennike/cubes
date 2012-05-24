@@ -11,7 +11,13 @@ uniform vec3 uSunColor;
 uniform vec3 uHorizonColor;
 varying vec3 vSunVector;
 
+uniform sampler2D uTexStars;
+
 uniform mat4 uRotMatrix;
+
+uniform float uTimeOfDay;
+
+const float PI=3.1415926535;
 
 void main(void) {
 	vec3 norm = vNormal;
@@ -32,6 +38,16 @@ void main(void) {
 		w_horizon = clamp(w_horizon, 0.0, 1.0);
 	}
 	
-	gl_FragColor = vec4(uSunColor * w_sun + uSkyColor *  max(0.0, 1.0 - w_sun - w_horizon) + uHorizonColor * w_horizon, 1.0);
+	// Sky background
+	float rho = asin(vWorldPos.y);
+	float theta = atan(vWorldPos.x, vWorldPos.z);
+	vec2 tc = vec2(rho * sin(theta), rho * cos(theta));
+	
+	float todRad = uTimeOfDay / 100.0 * 2.0 * PI;
+	vec3 skyBackroundColor;
+	skyBackroundColor = texture2D(uTexStars, tc).rgb * (sin(todRad + PI) * 0.5 + 0.5) + uSkyColor * (sin(todRad) * 0.5 + 0.5);
+	
+	gl_FragColor = vec4(uSunColor * w_sun + skyBackroundColor *  max(0.0, 1.0 - w_sun - w_horizon) + uHorizonColor * w_horizon, 1.0);
+	//gl_FragColor = vec4(skyColor, 1.0);
 	//gl_FragColor = vec4(vWorldPos, 1.0);
 }
