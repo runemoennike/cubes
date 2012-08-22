@@ -1,0 +1,428 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "game.js",
+			"settings":
+			{
+				"buffer_size": 3293,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "bootstrap.js",
+			"settings":
+			{
+				"buffer_size": 1515,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Rune/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 112,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "shaders/arm.frag",
+			"settings":
+			{
+				"buffer_size": 260,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "shaders/arm.vert",
+			"settings":
+			{
+				"buffer_size": 336,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "shaders/cube.frag",
+			"settings":
+			{
+				"buffer_size": 2860,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 2655,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"mini",
+				"Minify Javascript"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"clipbo",
+				"Clipboard History"
+			],
+			[
+				"format",
+				"Format: Javascript"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"insall",
+				"Package Control: Install Package"
+			],
+			[
+				"prot",
+				"Snippet: Prototype"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Prototype"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Rune/webgl/cubes/shaders/cube.vert",
+		"/C/Users/Rune/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Rune/AppData/Roaming/Sublime Text 2/Packages/User/Plain text.sublime-settings",
+		"/C/Users/Rune/AppData/Roaming/Sublime Text 2/Packages/User/Distraction Free.sublime-settings",
+		"/C/Users/Rune/AppData/Roaming/Sublime Text 2/Packages/User/JavaScript.sublime-settings",
+		"/C/Users/Rune/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"();\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "game.js",
+					"settings":
+					{
+						"buffer_size": 3293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								501,
+								501
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "bootstrap.js",
+					"settings":
+					{
+						"buffer_size": 1515,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								523,
+								523
+							]
+						],
+						"settings":
+						{
+							"rulers":
+							[
+								120
+							],
+							"spell_check": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Rune/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 112,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "shaders/arm.frag",
+					"settings":
+					{
+						"buffer_size": 260,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								124,
+								124
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "shaders/arm.vert",
+					"settings":
+					{
+						"buffer_size": 336,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								336,
+								336
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "shaders/cube.frag",
+					"settings":
+					{
+						"buffer_size": 2860,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1085,
+								1085
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 645.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 2655,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1397,
+								1397
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"game",
+				"game.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 190.0,
+	"status_bar_visible": true
+}
